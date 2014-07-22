@@ -1,0 +1,55 @@
+
+<html data-ng-app = 'main'>
+
+<head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script type="text/javascript" src="javascript/angular.min.js"></script>
+<script type="text/javascript" src="javascript/controller.js"></script>
+<script type="text/javascript" src="javascript/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="javascript/ng-csv.min.js"></script>
+<script type="text/javascript" src="javascript/angular-sanitize.js"></script>
+<script type="text/javascript" src="javascript/ng-table.js"></script>
+
+</head>
+
+<body data-ng-controller="MyController" class="container">
+	<div class="well">
+		<div class="page-header">
+			<h1> <span class="glyphicon glyphicon-tower"> </span> Varian Users Database </h1>
+		</div>
+		
+		<h2>Export</h2>
+ 	 <div>
+      <button type="button" data-ng-csv="Mydata" data-ng-filename="test.csv">Export</button>
+	</div>
+	
+		<!--Division for adding users to database-->
+		<div class="form-group">
+			<h3>Save patient name</h3>
+			<form data-ng-submit="SendToServer(name)">
+				<input type="text" id="userid" data-ng-model="name" class="form-control"
+					required>
+				<button type="Submit" class="btn btn-success btn-lg btn-block">SAVE</button>
+			</form>
+		</div>
+
+		<!--Division for retrieving users from database-->
+		<div class="form-group">
+			<br> <br>
+			<h3>Load patient name</h3>
+			<button data-ng-click="LoadFromServer()" class="btn btn-success btn-lg btn-block">LOAD</button>
+			<br> <br>
+			<!--Display logic-->
+			<strong>Search: <input type="text" data-ng-model ="query"> </strong> 
+		
+			<table class="table">
+      			<tr data-ng-repeat="f in Mydata| filter:query">
+        	    	<td>{{f.name}}</td>	 
+        		</tr>
+       		</table>		
+		</div>
+		
+	</div>
+</body>
+</html>
+
