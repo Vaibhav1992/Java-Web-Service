@@ -5,12 +5,6 @@ import javax.ws.rs.core.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.lang.String;
-
-
-
-
-
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.json.JSONObject;
